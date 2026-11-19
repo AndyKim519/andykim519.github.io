@@ -135,7 +135,7 @@ em { font-style: italic; color: var(--brown-soft); }
 }
 .hero__name { font-size: clamp(2.8rem, 8vw, 5rem); letter-spacing: -0.02em; }
 .hero__role { margin: .7rem 0 0; font-size: clamp(1.1rem, 2.6vw, 1.5rem); color: var(--brown); font-weight: 500; }
-.hero__tagline { margin: .4rem 0 0; color: var(--ink-muted); font-size: 1.1rem; }
+.hero__bio { margin: 1.1rem 0 0; color: var(--ink-muted); font-size: 1.12rem; max-width: 56ch; }
 
 .hero__links { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: .8rem; }
 
@@ -154,7 +154,6 @@ em { font-style: italic; color: var(--brown-soft); }
 .section { padding: clamp(4rem, 9vh, 6.5rem) 1.5rem; }
 .section--alt { background: var(--beige-alt); }
 .section__inner { max-width: var(--maxw); margin: 0 auto; }
-.section__inner--narrow { max-width: 720px; }
 
 .section__head { margin-bottom: 2.6rem; }
 .section__kicker {
@@ -240,11 +239,6 @@ em { font-style: italic; color: var(--brown-soft); }
 
 .race__link { margin-top: auto; font-weight: 600; font-size: .9rem; color: var(--green); }
 .race__link:hover { color: var(--brown); }
-
-/* ---------- About ---------- */
-.about__text { font-size: 1.15rem; color: var(--ink); }
-.about__links { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1.6rem; }
-.about__links a { font-weight: 600; }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--line); background: var(--beige-alt); }
