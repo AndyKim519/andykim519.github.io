@@ -212,7 +212,6 @@ em { font-style: italic; color: var(--brown-soft); }
 }
 .races a:hover { background: rgba(90, 115, 82, 0.14); border-color: rgba(90, 115, 82, 0.3); color: var(--forest); transform: translateX(2px); }
 .races__year { flex-shrink: 0; font-size: .78rem; font-weight: 600; color: var(--moss); white-space: nowrap; }
-.races__year--upcoming { color: var(--brown-soft); }
 
 /* ---------- About ---------- */
 .about__text { font-size: 1.15rem; color: var(--ink); }
