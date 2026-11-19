@@ -203,11 +203,13 @@ em { font-style: italic; color: var(--brown-soft); }
 
 /* Race cards inside the Running hobby card */
 .races {
-  list-style: none; margin: 1.4rem 0 0; padding: 0;
-  display: grid; gap: 1.1rem;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  list-style: none; margin: 1.4rem 0 0; padding: 0 0 .6rem;
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(230px, 1fr);
+  gap: 1.1rem; overflow-x: auto; scroll-snap-type: x proximity;
+  scrollbar-width: thin;
 }
 .race {
+  scroll-snap-align: start;
   display: flex; flex-direction: column;
   background: var(--beige); border: 1px solid var(--line);
   border-radius: 14px; overflow: hidden;
