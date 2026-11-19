@@ -229,7 +229,6 @@ em { font-style: italic; color: var(--brown-soft); }
 .race__info { padding: 1rem 1.1rem 1.1rem; display: flex; flex-direction: column; gap: .7rem; flex: 1; }
 .race__head { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; }
 .race__name { font-size: 1.12rem; line-height: 1.2; }
-.race__year { flex-shrink: 0; font-size: .82rem; font-weight: 600; color: var(--moss); }
 
 .race__stats { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .55rem .9rem; }
 .race__stats > div { display: flex; flex-direction: column; }
