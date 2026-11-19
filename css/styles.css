@@ -201,6 +201,19 @@ em { font-style: italic; color: var(--brown-soft); }
   background: rgba(90, 115, 82, 0.15); border: 1px solid rgba(90, 115, 82, 0.28);
 }
 
+/* Race list inside the Running hobby card */
+.races { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .5rem; }
+.races li { margin: 0; }
+.races a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: .75rem;
+  padding: .55rem .8rem; border-radius: 10px; font-weight: 500; color: var(--ink);
+  background: rgba(90, 69, 49, 0.06); border: 1px solid transparent;
+  transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+}
+.races a:hover { background: rgba(90, 115, 82, 0.14); border-color: rgba(90, 115, 82, 0.3); color: var(--forest); transform: translateX(2px); }
+.races__year { flex-shrink: 0; font-size: .78rem; font-weight: 600; color: var(--moss); white-space: nowrap; }
+.races__year--upcoming { color: var(--brown-soft); }
+
 /* ---------- About ---------- */
 .about__text { font-size: 1.15rem; color: var(--ink); }
 .about__links { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1.6rem; }
