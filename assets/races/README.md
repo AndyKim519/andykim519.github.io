@@ -10,6 +10,8 @@ soon" placeholder (no broken image).
 | Lake Tahoe Marathon 2025 | `lake-tahoe-marathon-2025.jpg` |
 | Napa Valley Marathon 2026 | `napa-valley-marathon-2026.jpg` |
 | Berkeley Half Marathon 2026 | `berkeley-half-2026.jpg` |
+| Oakland Marathon 2027 (upcoming) | `oakland-marathon-2027.jpg` |
+| SF Marathon 2027 (upcoming) | `sf-marathon-2027.jpg` |
 
 Tips:
 - Landscape orientation works best (cards use a 16:10 crop, `object-fit: cover`).
