@@ -95,57 +95,87 @@
   var closeBtn = document.getElementById("rmClose");
   var lastFocus = null;
 
-  function esc(s) { return String(s).replace(/"/g, "&quot;"); }
+  // Album state (module-scoped so arrow keys can drive it)
+  var trackEl = null, dotsEl = null, controlsEl = null, albumIndex = 0;
 
-  function slideHTML(src, alt) {
-    return '<figure class="album__slide race__photo race__photo--empty">' +
-      '<img src="' + esc(src) + '" alt="' + esc(alt) + '" ' +
-      "onload=\"this.closest('.race__photo').classList.remove('race__photo--empty')\" " +
-      "onerror=\"this.closest('.race__photo').classList.add('race__photo--empty'); this.remove();\" />" +
-      "</figure>";
+  function placeholderSlide() {
+    var fig = document.createElement("figure");
+    fig.className = "album__slide race__photo race__photo--empty";
+    return fig;
+  }
+
+  function makeSlide(src, alt) {
+    var fig = document.createElement("figure");
+    fig.className = "album__slide race__photo race__photo--empty";
+    var img = document.createElement("img");
+    img.alt = alt;
+    img.decoding = "async";
+    img.addEventListener("load", function () { fig.classList.remove("race__photo--empty"); });
+    // A photo that isn't there yet drops its own slide, so listing not-yet-added
+    // filenames is harmless — only real photos show up in the album.
+    img.addEventListener("error", function () { removeSlide(fig); });
+    img.src = src;
+    fig.appendChild(img);
+    return fig;
+  }
+
+  function removeSlide(fig) {
+    if (!trackEl || !fig.parentNode) return;
+    trackEl.removeChild(fig);
+    if (trackEl.children.length === 0) trackEl.appendChild(placeholderSlide());
+    renderDots();
+    showSlide(albumIndex);
+  }
+
+  function renderDots() {
+    if (!dotsEl) return;
+    var n = trackEl.children.length;
+    dotsEl.innerHTML = "";
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "album__dot";
+      b.setAttribute("aria-label", "Photo " + (i + 1));
+      (function (idx) { b.addEventListener("click", function () { showSlide(idx); }); })(i);
+      dotsEl.appendChild(b);
+    }
+    controlsEl.style.display = n > 1 ? "" : "none";
+  }
+
+  function showSlide(i) {
+    var n = trackEl.children.length;
+    if (n === 0) return;
+    albumIndex = (i + n) % n;
+    trackEl.style.transform = "translateX(" + (-albumIndex * 100) + "%)";
+    var dots = dotsEl.children;
+    for (var d = 0; d < dots.length; d++) {
+      dots[d].setAttribute("aria-current", d === albumIndex ? "true" : "false");
+    }
   }
 
   function buildAlbum(photos, name) {
-    if (!photos || !photos.length) photos = [""];
-    var slides = photos.map(function (src) { return slideHTML(src, name + " photo"); }).join("");
-    var controls = "";
-    if (photos.length > 1) {
-      var dots = photos.map(function (_, i) {
-        return '<button class="album__dot" data-i="' + i + '" aria-label="Photo ' + (i + 1) + '"' +
-          (i === 0 ? ' aria-current="true"' : "") + "></button>";
-      }).join("");
-      controls =
-        '<div class="album__controls">' +
-        '<button type="button" class="album__nav album__prev" aria-label="Previous photo">&lsaquo;</button>' +
-        '<div class="album__dots">' + dots + "</div>" +
-        '<button type="button" class="album__nav album__next" aria-label="Next photo">&rsaquo;</button>' +
-        "</div>";
-    }
     albumEl.innerHTML =
       '<p class="rmodal__h">Photos</p>' +
-      '<div class="album" data-index="0"><div class="album__viewport"><div class="album__track">' +
-      slides + "</div></div>" + controls + "</div>";
-    wireAlbum();
-  }
+      '<div class="album"><div class="album__viewport"><div class="album__track"></div></div>' +
+      '<div class="album__controls">' +
+      '<button type="button" class="album__nav album__prev" aria-label="Previous photo">&lsaquo;</button>' +
+      '<div class="album__dots"></div>' +
+      '<button type="button" class="album__nav album__next" aria-label="Next photo">&rsaquo;</button>' +
+      "</div></div>";
+    trackEl = albumEl.querySelector(".album__track");
+    dotsEl = albumEl.querySelector(".album__dots");
+    controlsEl = albumEl.querySelector(".album__controls");
+    albumIndex = 0;
 
-  function wireAlbum() {
-    var album = albumEl.querySelector(".album");
-    if (!album) return;
-    var track = album.querySelector(".album__track");
-    var slides = album.querySelectorAll(".album__slide");
-    var dots = album.querySelectorAll(".album__dot");
-    var n = slides.length;
-    function go(i) {
-      i = (i + n) % n;
-      album.dataset.index = i;
-      track.style.transform = "translateX(" + (-i * 100) + "%)";
-      dots.forEach(function (d, di) { d.setAttribute("aria-current", di === i ? "true" : "false"); });
+    if (photos && photos.length) {
+      photos.forEach(function (src) { trackEl.appendChild(makeSlide(src, name + " photo")); });
+    } else {
+      trackEl.appendChild(placeholderSlide());
     }
-    var prev = album.querySelector(".album__prev");
-    var next = album.querySelector(".album__next");
-    if (prev) prev.addEventListener("click", function () { go(+album.dataset.index - 1); });
-    if (next) next.addEventListener("click", function () { go(+album.dataset.index + 1); });
-    dots.forEach(function (d) { d.addEventListener("click", function () { go(+d.dataset.i); }); });
+    albumEl.querySelector(".album__prev").addEventListener("click", function () { showSlide(albumIndex - 1); });
+    albumEl.querySelector(".album__next").addEventListener("click", function () { showSlide(albumIndex + 1); });
+    renderDots();
+    showSlide(0);
   }
 
   function openRace(card) {
@@ -199,4 +229,10 @@
   // Click on the backdrop (the dialog element itself, outside its content) closes it.
   modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
   modal.addEventListener("close", function () { if (lastFocus) lastFocus.focus(); });
+  // Left/right arrow keys slide through the album when it has more than one photo.
+  modal.addEventListener("keydown", function (e) {
+    if (!trackEl || trackEl.children.length < 2) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); showSlide(albumIndex + 1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); showSlide(albumIndex - 1); }
+  });
 })();
