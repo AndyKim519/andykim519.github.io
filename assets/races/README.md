@@ -18,3 +18,19 @@ Tips:
 - Aim for ~1200px wide and compress (JPEG) to keep the page fast.
 - `.jpg` is referenced in `index.html`; if you use `.png`/`.webp`, update the
   `src` in the matching `<li class="race">` block (or rename the file to `.jpg`).
+
+## Race detail modal (click a completed race)
+
+Clicking a completed race opens a pop-up with a photo album (left), a note
+(middle), and the stats (right). The album and note content live in the
+`RACE_DETAILS` map in `js/main.js`:
+
+- **Photo album** — add more filenames to a race's `photos` array to make the
+  album slidable, e.g.
+  `"berkeley-2026": { photos: ["assets/races/berkeley-half-2026.jpg", "assets/races/berkeley-half-2026-2.jpg"], note: "" }`.
+  The first photo is also the card's cover image. One photo = no slider arrows.
+- **Note ("How it went")** — put your race write-up in the `note` string (use a
+  blank line between paragraphs). Leave it `""` to show the "coming soon"
+  placeholder.
+- **Stats + results link** are pulled automatically from the race card.
+

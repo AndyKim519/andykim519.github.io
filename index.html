@@ -170,7 +170,7 @@
                 </div>
               </li>
 
-              <li class="race">
+              <li class="race" data-race="berkeley-2026" data-results="https://live.chronotrack.com/event/94320/results/entry/80911068" role="button" tabindex="0" aria-label="Berkeley Half Marathon 2026 — view race details">
                 <figure class="race__photo race__photo--empty">
                   <img src="assets/races/berkeley-half-2026.jpg" alt="Andrew Kim at the Berkeley Half Marathon, 2026" loading="lazy"
                        onload="this.closest('.race__photo').classList.remove('race__photo--empty')"
@@ -186,11 +186,10 @@
                     <div><dt>Overall</dt><dd>217 <span class="race__sub">of 3421</span></dd></div>
                     <div><dt>Division (M20-29)</dt><dd>66 <span class="race__sub">of 609</span></dd></div>
                   </dl>
-                  <a class="race__link" href="https://live.chronotrack.com/event/94320/results/entry/80911068" target="_blank" rel="noopener">View results &rarr;</a>
                 </div>
               </li>
 
-              <li class="race">
+              <li class="race" data-race="napa-2026" data-results="https://results.svetiming.com/napa-valley-marathon/events/2026/kaiser-permanente-napa-valley-marathon/1026/entrant?share=1" role="button" tabindex="0" aria-label="Napa Valley Marathon 2026 — view race details">
                 <figure class="race__photo race__photo--empty">
                   <img src="assets/races/napa-valley-marathon-2026.jpg" alt="Andrew Kim at the Napa Valley Marathon, 2026" loading="lazy"
                        onload="this.closest('.race__photo').classList.remove('race__photo--empty')"
@@ -206,11 +205,10 @@
                     <div><dt>Overall</dt><dd>380 <span class="race__sub">of 2232</span></dd></div>
                     <div><dt>Division (M21-24)</dt><dd>19 <span class="race__sub">of 83</span></dd></div>
                   </dl>
-                  <a class="race__link" href="https://results.svetiming.com/napa-valley-marathon/events/2026/kaiser-permanente-napa-valley-marathon/1026/entrant?share=1" target="_blank" rel="noopener">View results &rarr;</a>
                 </div>
               </li>
 
-              <li class="race">
+              <li class="race" data-race="lake-tahoe-2025" data-results="https://results.raceroster.com/v3/events/ufkaaytknesjaycb/race/245859/participant/yn2m7enjua26ffb5?filter_search=Andrew+Kim" role="button" tabindex="0" aria-label="Lake Tahoe Marathon 2025 — view race details">
                 <figure class="race__photo race__photo--empty">
                   <img src="assets/races/lake-tahoe-marathon-2025.jpg" alt="Andrew Kim at the Lake Tahoe Marathon, 2025" loading="lazy"
                        onload="this.closest('.race__photo').classList.remove('race__photo--empty')"
@@ -226,11 +224,10 @@
                     <div><dt>Overall</dt><dd>25 <span class="race__sub">of 184</span></dd></div>
                     <div><dt>Division</dt><dd>1 <span class="race__sub">of 9</span></dd></div>
                   </dl>
-                  <a class="race__link" href="https://results.raceroster.com/v3/events/ufkaaytknesjaycb/race/245859/participant/yn2m7enjua26ffb5?filter_search=Andrew+Kim" target="_blank" rel="noopener">View results &rarr;</a>
                 </div>
               </li>
 
-              <li class="race">
+              <li class="race" data-race="golden-gate-2024" data-results="https://results2.xacte.com/#/e/2569/trackers" role="button" tabindex="0" aria-label="Golden Gate Half Marathon 2024 — view race details">
                 <figure class="race__photo race__photo--empty">
                   <img src="assets/races/golden-gate-half-2024.jpg" alt="Andrew Kim at the Golden Gate Half Marathon, 2024" loading="lazy"
                        onload="this.closest('.race__photo').classList.remove('race__photo--empty')"
@@ -246,7 +243,6 @@
                     <div><dt>Overall</dt><dd>207 <span class="race__sub">of 4584</span></dd></div>
                     <div><dt>Division</dt><dd>33 <span class="race__sub">of 277</span></dd></div>
                   </dl>
-                  <a class="race__link" href="https://results2.xacte.com/#/e/2569/trackers" target="_blank" rel="noopener">View results &rarr;</a>
                 </div>
               </li>
             </ul>
@@ -273,6 +269,18 @@
       <a href="#top" class="footer__top">Back to top &uarr;</a>
     </div>
   </footer>
+
+  <dialog id="raceModal" class="rmodal" aria-labelledby="rmTitle">
+    <div class="rmodal__bar">
+      <h3 id="rmTitle" class="rmodal__title"></h3>
+      <button type="button" class="rmodal__close" id="rmClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="rmodal__grid">
+      <div class="rmodal__album" id="rmAlbum"></div>
+      <div class="rmodal__note" id="rmNote"></div>
+      <aside class="rmodal__stats" id="rmStats"></aside>
+    </div>
+  </dialog>
 
   <script src="js/main.js"></script>
 </body>
