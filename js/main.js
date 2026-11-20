@@ -54,10 +54,38 @@
   // Per-race album photos + note. Add more filenames to a photos array for a
   // multi-photo album; leave note empty to show the placeholder prompt.
   var RACE_DETAILS = {
-    "golden-gate-2024": { photos: ["assets/races/golden-gate-half-2024.jpg"], note: "" },
-    "lake-tahoe-2025":  { photos: ["assets/races/lake-tahoe-marathon-2025.jpg"], note: "" },
-    "napa-2026":        { photos: ["assets/races/napa-valley-marathon-2026.jpg"], note: "" },
-    "berkeley-2026":    { photos: ["assets/races/berkeley-half-2026.jpg"], note: "" }
+    "berkeley-2026": {
+      photos: ["assets/races/berkeley-half-2026.jpg"],
+      note: "Finally PRed in the half... Honestly was not feeling too hot and was gonna pace Angela. First half mile it felt so great that I sent it. I was pushing it every mile but also having so much fun every mile. Great energy, glad I did this race as a Berkeley alum. GO BEARS!"
+    },
+    "napa-2026": {
+      photos: ["assets/races/napa-valley-marathon-2026.jpg"],
+      note: "HUGE PR! Stuck with the 3:30 pacers all the way through and had a huge kick at the end. Great photos as well."
+    },
+    "golden-gate-2025": {
+      photos: ["assets/races/golden-gate-half-2025.jpg"],
+      note: "Pacing Chloe, fun run!"
+    },
+    "lake-tahoe-2025": {
+      photos: ["assets/races/lake-tahoe-marathon-2025.jpg"],
+      note: "FIRST MARATHON! Proud I finished, 1st in age group, 24th overall. Beautiful view of Lake Tahoe."
+    },
+    "sf-hm-2025": {
+      photos: ["assets/races/sf-half-marathon-2025.jpg"],
+      note: "I was sick, the course was so windy and rainy, living hell."
+    },
+    "berkeley-10k-2024": {
+      photos: ["assets/races/berkeley-10k-2024.jpg"],
+      note: "Fun race with Vishal."
+    },
+    "golden-gate-2024": {
+      photos: ["assets/races/golden-gate-half-2024.jpg"],
+      note: "FIRST HALF MARATHON! Ran it alone, but super nice course with a great view of the GGB."
+    },
+    "lake-union-10k-2024": {
+      photos: ["assets/races/lake-union-10k-2024.jpg"],
+      note: "Good race with Randy! Bye bye Seattle, and thank you for getting me back into running."
+    }
   };
 
   var titleEl = document.getElementById("rmTitle");

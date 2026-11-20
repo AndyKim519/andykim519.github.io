@@ -6,8 +6,12 @@ soon" placeholder (no broken image).
 
 | Race | Filename |
 |------|----------|
+| Lake Union 10K 2024 | `lake-union-10k-2024.jpg` |
 | Golden Gate Half Marathon 2024 | `golden-gate-half-2024.jpg` |
+| Berkeley 10K 2024 | `berkeley-10k-2024.jpg` |
+| SF Half Marathon 2025 | `sf-half-marathon-2025.jpg` |
 | Lake Tahoe Marathon 2025 | `lake-tahoe-marathon-2025.jpg` |
+| Golden Gate Half Marathon 2025 | `golden-gate-half-2025.jpg` |
 | Napa Valley Marathon 2026 | `napa-valley-marathon-2026.jpg` |
 | Berkeley Half Marathon 2026 | `berkeley-half-2026.jpg` |
 | Oakland Marathon 2027 (upcoming) | `oakland-marathon-2027.jpg` |
