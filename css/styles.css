@@ -186,6 +186,7 @@ em { font-style: italic; color: var(--brown-soft); }
   background: rgba(90, 115, 82, 0.16); color: var(--green); border: 1px solid rgba(90, 115, 82, 0.3);
 }
 .tag--wip { background: rgba(122, 98, 72, 0.16); color: var(--brown); border-color: rgba(122, 98, 72, 0.32); }
+.tag--concept { background: rgba(102, 94, 79, 0.14); color: var(--ink-muted); border-color: rgba(102, 94, 79, 0.3); }
 
 .card__tech { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0 0; padding: 0; }
 .card__tech li {
